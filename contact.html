@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Arpan Dutta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.11.9/bundle/libphonenumber-js.min.js"></script>
+  <style>
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite;
+    }
+    .field-error {
+      border-color: rgb(248 113 113) !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4 py-12">
+  <div class="w-full max-w-md">
+    <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+        <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
+      </svg>
+      Back to home
+    </a>
+    <h1 class="animate-gradient bg-gradient-to-r from-indigo-400 via-pink-400 to-amber-300 bg-clip-text text-transparent text-4xl md:text-5xl font-extrabold tracking-tight text-center mb-8 select-none">
+      Your Details
+    </h1>
+
+    <form id="details-form" novalidate class="bg-slate-800/60 backdrop-blur border border-slate-700 rounded-2xl shadow-xl p-8 space-y-6">
+      <!-- Name -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-slate-200 mb-1.5">Name</label>
+        <input type="text" id="name" name="name"
+          class="w-full rounded-lg bg-slate-900 border border-slate-600 text-slate-100 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+          placeholder="Jane Doe" />
+        <p id="name-error" class="hidden mt-1.5 text-sm text-red-400"></p>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-slate-200 mb-1.5">Email</label>
+        <input type="text" id="email" name="email"
+          class="w-full rounded-lg bg-slate-900 border border-slate-600 text-slate-100 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+          placeholder="jane.doe@gmail.com" />
+        <p id="email-error" class="hidden mt-1.5 text-sm text-red-400"></p>
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label for="phone" class="block text-sm font-medium text-slate-200 mb-1.5">Phone number</label>
+        <div class="flex gap-2">
+          <select id="country-code" name="country-code"
+            class="w-32 shrink-0 rounded-lg bg-slate-900 border border-slate-600 text-slate-100 px-2 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition">
+          </select>
+          <input type="text" id="phone" name="phone"
+            class="w-full rounded-lg bg-slate-900 border border-slate-600 text-slate-100 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+            placeholder="Phone number" />
+        </div>
+        <p id="phone-error" class="hidden mt-1.5 text-sm text-red-400"></p>
+      </div>
+
+      <!-- Gender -->
+      <div>
+        <label for="gender" class="block text-sm font-medium text-slate-200 mb-1.5">Gender</label>
+        <select id="gender" name="gender"
+          class="w-full rounded-lg bg-slate-900 border border-slate-600 text-slate-100 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition">
+          <option value="" selected disabled>Select gender</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="non-binary">Non-binary</option>
+          <option value="prefer-not-to-say">Prefer not to say</option>
+        </select>
+        <p id="gender-error" class="hidden mt-1.5 text-sm text-red-400"></p>
+      </div>
+
+      <button type="submit"
+        class="w-full rounded-lg bg-gradient-to-r from-indigo-500 via-pink-500 to-amber-400 text-slate-900 font-semibold py-2.5 hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+        Submit
+      </button>
+
+      <p id="success-message" class="hidden text-center text-sm text-emerald-400">Details submitted successfully.</p>
+    </form>
+  </div>
+
+  <script>
+    const COUNTRIES = [
+      ["US", "+1", "United States"],
+      ["GB", "+44", "United Kingdom"],
+      ["IN", "+91", "India"],
+      ["CA", "+1", "Canada"],
+      ["AU", "+61", "Australia"],
+      ["DE", "+49", "Germany"],
+      ["FR", "+33", "France"],
+      ["JP", "+81", "Japan"],
+      ["CN", "+86", "China"],
+      ["BR", "+55", "Brazil"],
+      ["ZA", "+27", "South Africa"],
+      ["AE", "+971", "United Arab Emirates"],
+      ["SG", "+65", "Singapore"],
+      ["NZ", "+64", "New Zealand"],
+      ["MX", "+52", "Mexico"],
+    ];
+
+    const countrySelect = document.getElementById("country-code");
+    COUNTRIES.forEach(([iso, dial, name]) => {
+      const opt = document.createElement("option");
+      opt.value = iso;
+      opt.textContent = `${name} (${dial})`;
+      countrySelect.appendChild(opt);
+    });
+    countrySelect.value = "US";
+
+    const form = document.getElementById("details-form");
+    const successMessage = document.getElementById("success-message");
+
+    function setError(fieldId, message) {
+      const field = document.getElementById(fieldId);
+      const errorEl = document.getElementById(`${fieldId}-error`);
+      field.classList.add("field-error");
+      errorEl.textContent = message;
+      errorEl.classList.remove("hidden");
+    }
+
+    function clearError(fieldId) {
+      const field = document.getElementById(fieldId);
+      const errorEl = document.getElementById(`${fieldId}-error`);
+      field.classList.remove("field-error");
+      errorEl.classList.add("hidden");
+      errorEl.textContent = "";
+    }
+
+    function validateName() {
+      const value = document.getElementById("name").value.trim();
+      if (!value) {
+        setError("name", "Name is required.");
+        return false;
+      }
+      if (value.length < 2) {
+        setError("name", "Name must be at least 2 characters long.");
+        return false;
+      }
+      clearError("name");
+      return true;
+    }
+
+    function validateEmail() {
+      const value = document.getElementById("email").value.trim();
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!value) {
+        setError("email", "Email is required.");
+        return false;
+      }
+      if (!emailPattern.test(value)) {
+        setError("email", "Enter a valid email address.");
+        return false;
+      }
+      if (!value.toLowerCase().endsWith("@gmail.com")) {
+        setError("email", "Only @gmail.com email addresses are allowed.");
+        return false;
+      }
+      clearError("email");
+      return true;
+    }
+
+    function validatePhone() {
+      const value = document.getElementById("phone").value.trim();
+      const countryIso = document.getElementById("country-code").value;
+      if (!value) {
+        setError("phone", "Phone number is required.");
+        return false;
+      }
+      const parsed = window.libphonenumber.parsePhoneNumberFromString(value, countryIso);
+      if (!parsed || !parsed.isValid()) {
+        const countryName = COUNTRIES.find(([iso]) => iso === countryIso)?.[2] ?? countryIso;
+        setError("phone", `Enter a valid phone number for ${countryName}.`);
+        return false;
+      }
+      clearError("phone");
+      return true;
+    }
+
+    function validateGender() {
+      const value = document.getElementById("gender").value;
+      if (!value) {
+        setError("gender", "Please select a gender.");
+        return false;
+      }
+      clearError("gender");
+      return true;
+    }
+
+    document.getElementById("name").addEventListener("input", validateName);
+    document.getElementById("email").addEventListener("input", validateEmail);
+    document.getElementById("phone").addEventListener("input", validatePhone);
+    document.getElementById("country-code").addEventListener("change", validatePhone);
+    document.getElementById("gender").addEventListener("change", validateGender);
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      successMessage.classList.add("hidden");
+
+      const isNameValid = validateName();
+      const isEmailValid = validateEmail();
+      const isPhoneValid = validatePhone();
+      const isGenderValid = validateGender();
+
+      if (isNameValid && isEmailValid && isPhoneValid && isGenderValid) {
+        successMessage.classList.remove("hidden");
+        form.reset();
+        countrySelect.value = "US";
+      }
+    });
+  </script>
+</body>
+</html>
