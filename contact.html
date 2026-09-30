@@ -11,10 +11,11 @@
       theme: {
         extend: {
           colors: {
-            cream: "#FBF3E7",
-            ink: "#241E1A",
-            blush: "#F3AFA9",
-            teal: "#8FD3C7",
+            evergreen: "#14281D",
+            hunter: "#355834",
+            olive: "#6E633D",
+            fawn: "#C2A878",
+            porcelain: "#F1F5F2",
           },
         },
       },
@@ -33,46 +34,46 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-cream text-ink px-4 py-12">
+<body class="min-h-screen flex items-center justify-center bg-porcelain text-evergreen px-4 py-12">
   <div class="w-full max-w-md">
-    <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-ink/60 hover:text-ink transition mb-6">
+    <a href="index.html" class="inline-flex items-center gap-1.5 text-sm text-evergreen/60 hover:text-evergreen transition mb-6">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
         <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd" />
       </svg>
       Back to home
     </a>
-    <h1 class="animate-float-in bg-gradient-to-r from-blush to-teal bg-clip-text text-transparent text-4xl md:text-5xl font-extrabold tracking-tight text-center mb-8 select-none">
+    <h1 class="animate-float-in bg-gradient-to-r from-fawn to-hunter bg-clip-text text-transparent text-4xl md:text-5xl font-extrabold tracking-tight text-center mb-8 select-none">
       Your Details
     </h1>
 
-    <form id="details-form" novalidate class="animate-float-in bg-white/70 border border-ink/10 rounded-2xl shadow-xl p-8 space-y-6" style="animation-delay: 0.1s">
+    <form id="details-form" novalidate class="animate-float-in bg-white/70 border border-olive/20 rounded-2xl shadow-xl p-8 space-y-6" style="animation-delay: 0.1s">
       <!-- Name -->
       <div>
-        <label for="name" class="block text-sm font-medium text-ink/70 mb-1.5">Name</label>
+        <label for="name" class="block text-sm font-medium text-evergreen/70 mb-1.5">Name</label>
         <input type="text" id="name" name="name"
-          class="w-full rounded-lg bg-cream border border-ink/15 text-ink placeholder:text-ink/40 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal transition"
+          class="w-full rounded-lg bg-porcelain border border-olive/20 text-evergreen placeholder:text-evergreen/40 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-hunter transition"
           placeholder="Jane Doe" />
         <p id="name-error" class="hidden mt-1.5 text-sm text-red-600"></p>
       </div>
 
       <!-- Email -->
       <div>
-        <label for="email" class="block text-sm font-medium text-ink/70 mb-1.5">Email</label>
+        <label for="email" class="block text-sm font-medium text-evergreen/70 mb-1.5">Email</label>
         <input type="text" id="email" name="email"
-          class="w-full rounded-lg bg-cream border border-ink/15 text-ink placeholder:text-ink/40 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal transition"
+          class="w-full rounded-lg bg-porcelain border border-olive/20 text-evergreen placeholder:text-evergreen/40 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-hunter transition"
           placeholder="jane.doe@gmail.com" />
         <p id="email-error" class="hidden mt-1.5 text-sm text-red-600"></p>
       </div>
 
       <!-- Phone -->
       <div>
-        <label for="phone" class="block text-sm font-medium text-ink/70 mb-1.5">Phone number</label>
+        <label for="phone" class="block text-sm font-medium text-evergreen/70 mb-1.5">Phone number</label>
         <div class="flex gap-2">
           <select id="country-code" name="country-code"
-            class="w-32 shrink-0 rounded-lg bg-cream border border-ink/15 text-ink px-2 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal transition">
+            class="w-32 shrink-0 rounded-lg bg-porcelain border border-olive/20 text-evergreen px-2 py-2.5 focus:outline-none focus:ring-2 focus:ring-hunter transition">
           </select>
           <input type="text" id="phone" name="phone"
-            class="w-full rounded-lg bg-cream border border-ink/15 text-ink placeholder:text-ink/40 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal transition"
+            class="w-full rounded-lg bg-porcelain border border-olive/20 text-evergreen placeholder:text-evergreen/40 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-hunter transition"
             placeholder="Phone number" />
         </div>
         <p id="phone-error" class="hidden mt-1.5 text-sm text-red-600"></p>
@@ -80,9 +81,9 @@
 
       <!-- Gender -->
       <div>
-        <label for="gender" class="block text-sm font-medium text-ink/70 mb-1.5">Gender</label>
+        <label for="gender" class="block text-sm font-medium text-evergreen/70 mb-1.5">Gender</label>
         <select id="gender" name="gender"
-          class="w-full rounded-lg bg-cream border border-ink/15 text-ink px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-teal transition">
+          class="w-full rounded-lg bg-porcelain border border-olive/20 text-evergreen px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-hunter transition">
           <option value="" selected disabled>Select gender</option>
           <option value="female">Female</option>
           <option value="male">Male</option>
@@ -93,7 +94,7 @@
       </div>
 
       <button type="submit"
-        class="w-full rounded-lg bg-gradient-to-r from-blush to-teal text-ink font-semibold py-2.5 hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+        class="w-full rounded-lg bg-gradient-to-r from-fawn to-hunter text-evergreen font-semibold py-2.5 hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
         Submit
       </button>
 
