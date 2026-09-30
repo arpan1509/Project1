@@ -42,6 +42,24 @@
     .animate-float-in {
       animation: float-in 0.8s ease-out both;
     }
+    @keyframes reveal-in {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .reveal.is-visible {
+      animation: reveal-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
   </style>
 </head>
 <body class="bg-porcelain text-evergreen antialiased">
@@ -106,19 +124,19 @@
   <!-- Stats -->
   <section class="bg-porcelain border-b border-olive/15">
     <div class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div>
+      <div class="reveal">
         <p class="text-4xl md:text-5xl font-extrabold text-hunter mb-1">X+</p>
         <p class="text-sm text-evergreen/60">Years of experience</p>
       </div>
-      <div>
+      <div class="reveal" style="animation-delay: 0.1s">
         <p class="text-4xl md:text-5xl font-extrabold text-hunter mb-1">X+</p>
         <p class="text-sm text-evergreen/60">Brands worked with</p>
       </div>
-      <div>
+      <div class="reveal" style="animation-delay: 0.2s">
         <p class="text-4xl md:text-5xl font-extrabold text-hunter mb-1">XM+</p>
         <p class="text-sm text-evergreen/60">Views generated</p>
       </div>
-      <div>
+      <div class="reveal" style="animation-delay: 0.3s">
         <p class="text-4xl md:text-5xl font-extrabold text-hunter mb-1">X+</p>
         <p class="text-sm text-evergreen/60">Automations shipped</p>
       </div>
@@ -127,11 +145,11 @@
 
   <!-- Skills -->
   <section id="skills" class="max-w-6xl mx-auto px-6 py-20 md:py-24">
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">What I do</h2>
-    <p class="text-evergreen/60 mb-10 max-w-xl text-lg">A blend of creative execution and growth strategy for brands that want to stand out.</p>
+    <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-2">What I do</h2>
+    <p class="reveal text-evergreen/60 mb-10 max-w-xl text-lg" style="animation-delay: 0.1s">A blend of creative execution and growth strategy for brands that want to stand out.</p>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+      <div class="reveal group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
         <div class="w-11 h-11 rounded-xl bg-hunter/15 flex items-center justify-center mb-4 group-hover:bg-hunter/25 transition">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-hunter">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5 21 7v10l-6-3.5M3 6.75A1.75 1.75 0 0 1 4.75 5h8.5A1.75 1.75 0 0 1 15 6.75v10.5A1.75 1.75 0 0 1 13.25 19h-8.5A1.75 1.75 0 0 1 3 17.25V6.75Z" />
@@ -141,7 +159,7 @@
         <p class="text-sm text-evergreen/60 leading-relaxed">Scroll-stopping video ads for D2C and B2C brands, built for performance across social platforms.</p>
       </div>
 
-      <div class="group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+      <div class="reveal group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300" style="animation-delay: 0.05s">
         <div class="w-11 h-11 rounded-xl bg-fawn/25 flex items-center justify-center mb-4 group-hover:bg-fawn/40 transition">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-olive">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 6a2 2 0 0 1 2-2h9l5 5v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm7 4.5 2.5 2.5L17 9" />
@@ -151,7 +169,7 @@
         <p class="text-sm text-evergreen/60 leading-relaxed">Clean, on-brand visuals — from social creatives to full campaign design systems.</p>
       </div>
 
-      <div class="group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+      <div class="reveal group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300" style="animation-delay: 0.1s">
         <div class="w-11 h-11 rounded-xl bg-hunter/15 flex items-center justify-center mb-4 group-hover:bg-hunter/25 transition">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-hunter">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM2 20c0-3.314 2.686-6 6-6s6 2.686 6 6M14 20c0-2.21.895-4.21 2.343-5.657" />
@@ -161,7 +179,7 @@
         <p class="text-sm text-evergreen/60 leading-relaxed">End-to-end content calendars, community management and brand voice consistency.</p>
       </div>
 
-      <div class="group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+      <div class="reveal group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300" style="animation-delay: 0.15s">
         <div class="w-11 h-11 rounded-xl bg-fawn/25 flex items-center justify-center mb-4 group-hover:bg-fawn/40 transition">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-olive">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15l3.5-4.5 3 3L18 8" />
@@ -171,7 +189,7 @@
         <p class="text-sm text-evergreen/60 leading-relaxed">Paid campaigns across Meta and Google, optimized for ROAS and conversion, not just reach.</p>
       </div>
 
-      <div class="group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+      <div class="reveal group bg-white border border-olive/20 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300" style="animation-delay: 0.2s">
         <div class="w-11 h-11 rounded-xl bg-hunter/15 flex items-center justify-center mb-4 group-hover:bg-hunter/25 transition">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-5 h-5 text-hunter">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4M6.5 6.5l11 11m0-11-11 11" />
@@ -186,35 +204,35 @@
   <!-- Video & Graphic Design Showcase -->
   <section id="creative" class="bg-white border-y border-olive/15">
     <div class="max-w-6xl mx-auto px-6 py-24 md:py-28">
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-3">Video &amp; Graphic Design</h2>
-      <p class="text-evergreen/60 max-w-2xl text-lg mb-16">A look at ad edits and visual design work — this section will be populated with real client work.</p>
+      <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-3">Video &amp; Graphic Design</h2>
+      <p class="reveal text-evergreen/60 max-w-2xl text-lg mb-16" style="animation-delay: 0.1s">A look at ad edits and visual design work — this section will be populated with real client work.</p>
 
       <!-- Video Editing -->
       <div class="mb-20">
-        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Video Editing</h3>
-        <p class="text-evergreen/50 mb-8 max-w-xl">Edited ads for D2C and B2C brands — placeholders below, to be replaced with real reels/ads.</p>
+        <h3 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-2">Video Editing</h3>
+        <p class="reveal text-evergreen/50 mb-8 max-w-xl" style="animation-delay: 0.1s">Edited ads for D2C and B2C brands — placeholders below, to be replaced with real reels/ads.</p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
+          <div class="reveal aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"><path d="M8 5v14l11-7-11-7Z"/></svg>
             <span class="text-xs uppercase tracking-wide">Ad placeholder 1</span>
           </div>
-          <div class="aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
+          <div class="reveal aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition" style="animation-delay: 0.05s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"><path d="M8 5v14l11-7-11-7Z"/></svg>
             <span class="text-xs uppercase tracking-wide">Ad placeholder 2</span>
           </div>
-          <div class="aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
+          <div class="reveal aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition" style="animation-delay: 0.1s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"><path d="M8 5v14l11-7-11-7Z"/></svg>
             <span class="text-xs uppercase tracking-wide">Ad placeholder 3</span>
           </div>
-          <div class="aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
+          <div class="reveal aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"><path d="M8 5v14l11-7-11-7Z"/></svg>
             <span class="text-xs uppercase tracking-wide">Ad placeholder 4</span>
           </div>
-          <div class="aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
+          <div class="reveal aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition" style="animation-delay: 0.05s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"><path d="M8 5v14l11-7-11-7Z"/></svg>
             <span class="text-xs uppercase tracking-wide">Ad placeholder 5</span>
           </div>
-          <div class="aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition">
+          <div class="reveal aspect-video rounded-2xl bg-evergreen/90 flex flex-col items-center justify-center gap-3 text-porcelain/70 hover:text-porcelain transition" style="animation-delay: 0.1s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"><path d="M8 5v14l11-7-11-7Z"/></svg>
             <span class="text-xs uppercase tracking-wide">Ad placeholder 6</span>
           </div>
@@ -223,28 +241,28 @@
 
       <!-- Graphic Design -->
       <div>
-        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">Graphic Design</h3>
-        <p class="text-evergreen/50 mb-8 max-w-xl">Campaign creatives and brand visuals — placeholders below, to be replaced with real design work.</p>
+        <h3 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-2">Graphic Design</h3>
+        <p class="reveal text-evergreen/50 mb-8 max-w-xl" style="animation-delay: 0.1s">Campaign creatives and brand visuals — placeholders below, to be replaced with real design work.</p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition">
+          <div class="reveal aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-10 h-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 6a2 2 0 0 1 2-2h9l5 5v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm7 4.5 2.5 2.5L17 9" />
             </svg>
             <span class="text-xs uppercase tracking-wide">Design 1</span>
           </div>
-          <div class="aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition">
+          <div class="reveal aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition" style="animation-delay: 0.05s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-10 h-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 6a2 2 0 0 1 2-2h9l5 5v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm7 4.5 2.5 2.5L17 9" />
             </svg>
             <span class="text-xs uppercase tracking-wide">Design 2</span>
           </div>
-          <div class="aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition">
+          <div class="reveal aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition" style="animation-delay: 0.1s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-10 h-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 6a2 2 0 0 1 2-2h9l5 5v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm7 4.5 2.5 2.5L17 9" />
             </svg>
             <span class="text-xs uppercase tracking-wide">Design 3</span>
           </div>
-          <div class="aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition">
+          <div class="reveal aspect-square rounded-2xl bg-olive/20 flex flex-col items-center justify-center gap-3 text-olive hover:bg-olive/30 transition" style="animation-delay: 0.15s">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-10 h-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 6a2 2 0 0 1 2-2h9l5 5v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm7 4.5 2.5 2.5L17 9" />
             </svg>
@@ -257,18 +275,18 @@
 
   <!-- CRM Automations Showcase -->
   <section id="automations" class="max-w-6xl mx-auto px-6 py-24 md:py-28">
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-3">CRM Automations</h2>
-    <p class="text-evergreen/60 max-w-2xl text-lg mb-16">n8n workflows built to save teams hours every week — screenshots and write-ups coming soon.</p>
+    <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-3">CRM Automations</h2>
+    <p class="reveal text-evergreen/60 max-w-2xl text-lg mb-16" style="animation-delay: 0.1s">n8n workflows built to save teams hours every week — screenshots and write-ups coming soon.</p>
 
     <div class="space-y-20">
       <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="aspect-[4/3] rounded-2xl bg-hunter/10 border border-hunter/20 flex items-center justify-center text-hunter">
+        <div class="reveal aspect-[4/3] rounded-2xl bg-hunter/10 border border-hunter/20 flex items-center justify-center text-hunter">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-16 h-16">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h4l2 3h8M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-6" />
             <circle cx="7" cy="17" r="1.5" /><circle cx="17" cy="17" r="1.5" />
           </svg>
         </div>
-        <div>
+        <div class="reveal" style="animation-delay: 0.15s">
           <p class="text-xs font-semibold uppercase tracking-widest text-fawn mb-2">Automation #1</p>
           <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-3">Workflow title placeholder</h3>
           <p class="text-evergreen/60 leading-relaxed">A short explanation of the problem this automation solved, the tools connected (CRM, ad platform, messaging), and the impact — to be added.</p>
@@ -276,13 +294,13 @@
       </div>
 
       <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="md:order-2 aspect-[4/3] rounded-2xl bg-hunter/10 border border-hunter/20 flex items-center justify-center text-hunter">
+        <div class="reveal md:order-2 aspect-[4/3] rounded-2xl bg-hunter/10 border border-hunter/20 flex items-center justify-center text-hunter">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-16 h-16">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h4l2 3h8M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-6" />
             <circle cx="7" cy="17" r="1.5" /><circle cx="17" cy="17" r="1.5" />
           </svg>
         </div>
-        <div class="md:order-1">
+        <div class="reveal md:order-1" style="animation-delay: 0.15s">
           <p class="text-xs font-semibold uppercase tracking-widest text-fawn mb-2">Automation #2</p>
           <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-3">Workflow title placeholder</h3>
           <p class="text-evergreen/60 leading-relaxed">A short explanation of the problem this automation solved, the tools connected (CRM, ad platform, messaging), and the impact — to be added.</p>
@@ -290,13 +308,13 @@
       </div>
 
       <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="aspect-[4/3] rounded-2xl bg-hunter/10 border border-hunter/20 flex items-center justify-center text-hunter">
+        <div class="reveal aspect-[4/3] rounded-2xl bg-hunter/10 border border-hunter/20 flex items-center justify-center text-hunter">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-16 h-16">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h4l2 3h8M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-6" />
             <circle cx="7" cy="17" r="1.5" /><circle cx="17" cy="17" r="1.5" />
           </svg>
         </div>
-        <div>
+        <div class="reveal" style="animation-delay: 0.15s">
           <p class="text-xs font-semibold uppercase tracking-widest text-fawn mb-2">Automation #3</p>
           <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-3">Workflow title placeholder</h3>
           <p class="text-evergreen/60 leading-relaxed">A short explanation of the problem this automation solved, the tools connected (CRM, ad platform, messaging), and the impact — to be added.</p>
@@ -308,23 +326,23 @@
   <!-- Experience -->
   <section id="experience" class="bg-white border-y border-olive/15">
     <div class="max-w-6xl mx-auto px-6 py-24 md:py-28">
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-3">Experience</h2>
-      <p class="text-evergreen/60 max-w-2xl text-lg mb-14">Roles and projects — to be filled in with real experience.</p>
+      <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-3">Experience</h2>
+      <p class="reveal text-evergreen/60 max-w-2xl text-lg mb-14" style="animation-delay: 0.1s">Roles and projects — to be filled in with real experience.</p>
 
       <div class="space-y-10 border-l-2 border-hunter/30 pl-8 max-w-2xl">
-        <div class="relative">
+        <div class="reveal relative">
           <span class="absolute -left-[38px] top-1.5 w-3.5 h-3.5 rounded-full bg-fawn ring-4 ring-porcelain"></span>
           <p class="text-sm text-evergreen/50 mb-1">Date range placeholder</p>
           <h3 class="text-xl font-semibold mb-1">Role title placeholder</h3>
           <p class="text-evergreen/60">Company placeholder — one-line description of responsibilities and impact.</p>
         </div>
-        <div class="relative">
+        <div class="reveal relative" style="animation-delay: 0.1s">
           <span class="absolute -left-[38px] top-1.5 w-3.5 h-3.5 rounded-full bg-fawn ring-4 ring-porcelain"></span>
           <p class="text-sm text-evergreen/50 mb-1">Date range placeholder</p>
           <h3 class="text-xl font-semibold mb-1">Role title placeholder</h3>
           <p class="text-evergreen/60">Company placeholder — one-line description of responsibilities and impact.</p>
         </div>
-        <div class="relative">
+        <div class="reveal relative" style="animation-delay: 0.2s">
           <span class="absolute -left-[38px] top-1.5 w-3.5 h-3.5 rounded-full bg-fawn ring-4 ring-porcelain"></span>
           <p class="text-sm text-evergreen/50 mb-1">Date range placeholder</p>
           <h3 class="text-xl font-semibold mb-1">Role title placeholder</h3>
@@ -337,8 +355,8 @@
   <!-- Testimonials Marquee -->
   <section id="reviews" class="py-20 md:py-24 bg-hunter/5">
     <div class="max-w-6xl mx-auto px-6 mb-10">
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">What clients say</h2>
-      <p class="text-evergreen/60 max-w-xl text-lg">A few words from brands I've worked with.</p>
+      <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-2">What clients say</h2>
+      <p class="reveal text-evergreen/60 max-w-xl text-lg" style="animation-delay: 0.1s">A few words from brands I've worked with.</p>
     </div>
 
     <div class="marquee-fade overflow-hidden">
@@ -412,8 +430,8 @@
   <!-- Contact CTA -->
   <section class="bg-evergreen text-porcelain">
     <div class="max-w-6xl mx-auto px-6 py-24 md:py-28 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Let's work together</h2>
-      <p class="text-porcelain/70 max-w-md mx-auto mb-8 text-lg">Have a brand that needs sharper content, smarter ads or smoother workflows? I'd love to hear about it.</p>
+      <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-4">Let's work together</h2>
+      <p class="reveal text-porcelain/70 max-w-md mx-auto mb-8 text-lg" style="animation-delay: 0.1s">Have a brand that needs sharper content, smarter ads or smoother workflows? I'd love to hear about it.</p>
       <a href="contact.html"
         class="inline-flex items-center gap-2 rounded-full bg-fawn text-evergreen font-semibold px-8 py-3.5 hover:scale-105 active:scale-95 transition-transform duration-200 shadow-lg shadow-black/20">
         Contact Me
@@ -453,5 +471,24 @@
     </div>
   </footer>
 
+  <script>
+    const revealTargets = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && revealTargets.length) {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+      );
+      revealTargets.forEach((el) => revealObserver.observe(el));
+    } else {
+      revealTargets.forEach((el) => el.classList.add("is-visible"));
+    }
+  </script>
 </body>
 </html>
